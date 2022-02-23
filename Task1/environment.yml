@@ -1,0 +1,10 @@
+name: my_env
+
+dependencies:
+  - numpy
+  - pandas
+  - nltk
+  - pip:
+    - gdown
+    - notebook
+    - scikit-learn
