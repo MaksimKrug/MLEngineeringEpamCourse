@@ -1,4 +1,8 @@
 stages:
+  load_data:
+    cmd: dvc pull
+    outs:
+      - data/jigsaw-toxic-comment-train.csv
   instal_dependencies:
     cmd: pip install -r requirements.txt
   preprocess_data:
