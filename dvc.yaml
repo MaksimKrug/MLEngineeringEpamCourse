@@ -6,13 +6,13 @@ stages:
     - preprocess_data.py
     outs:
     - data/preprocessed_data.csv
-  train:
-    cmd: python train.py
-    deps:
-    - data/preprocessed_data.csv
-    - train.py   
-    metrics:
-    - metrics.json:
-        cache: false
+  # train:
+  #   cmd: python train.py
+  #   deps:
+  #   - data/preprocessed_data.csv
+  #   - train.py   
+  #   metrics:
+  #   - metrics.json:
+  #       cache: false
   
   
