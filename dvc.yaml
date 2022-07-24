@@ -1,6 +1,6 @@
 stages:
   load_data:
-    cmd: dvc pull
+    cmd: pip install 'dvc[gdrive]' && dvc pull
   # instal_dependencies:
   #   cmd: pip install -r requirements.txt
   # preprocess_data:
