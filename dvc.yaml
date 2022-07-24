@@ -1,0 +1,18 @@
+stages:
+  preprocess_data:
+    cmd: python preprocess_data.py
+    deps:
+    - data/jigsaw-toxic-comment-train.csv
+    - preprocess_data.py
+    outs:
+    - data/preprocessed_data.csv
+  train:
+    cmd: python train.py
+    deps:
+    - data/preprocessed_data.csv
+    - train.py   
+    metrics:
+    - metrics.json:
+      cache: false
+  
+  

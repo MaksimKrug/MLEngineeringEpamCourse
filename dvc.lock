@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  preprocess_data:
+    cmd: python preprocess_data.py
+    deps:
+    - path: data/jigsaw-toxic-comment-train.csv
+      md5: 16db961d5fcd3ce849c0b11fcf0820a9
+      size: 95538001
+    - path: preprocess_data.py
+      md5: 5dba76f7e59e6b8ceea050f6ca4c2973
+      size: 658
+    outs:
+    - path: data/preprocessed_data.csv
+      md5: 85ec2aa0186165363627fd18b6aefd95
+      size: 3819170
