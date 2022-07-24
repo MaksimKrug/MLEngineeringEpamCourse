@@ -11,8 +11,8 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
-          # dvc pull
-          dvc repro
+          dvc pull
+          # dvc repro
 
           # Metrics
           # dvc metrics > report.md
