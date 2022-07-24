@@ -29,4 +29,4 @@ stages:
       md5: bacae594d87544de8b95b9e61d9c2bde
       size: 52
   load_data:
-    cmd: dvc pull
+    cmd: pip install 'dvc[gdrive]' && dvc pull

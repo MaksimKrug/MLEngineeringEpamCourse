@@ -1,6 +1,8 @@
 import json
 
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, f1_score
@@ -39,4 +41,12 @@ acc, f1 = accuracy_score(y_test, y_pred), f1_score(y_test, y_pred, average="micr
 
 with open("metrics.json", "w") as f:
     json.dump({"accuracy": acc, "f1_score": f1}, f)
- 
+
+
+# get the most important words
+all_words = vectorizer.get_feature_names()
+words_importnaces = model.feature_importances_
+the_most_important_words = sorted(list(zip(all_words, words_importnaces)), key=lambda x: x[1], reverse=True) 
+temp_data = pd.DataFrame(the_most_important_words, columns=["Words", "Importance"])
+fig = sns.barplot(x="Words", y="Importance", data=temp_data[:10])
+fig.get_figure().savefig("feature_importances.png") 
