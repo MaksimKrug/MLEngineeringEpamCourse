@@ -1,22 +1,22 @@
 stages:
   load_data:
     cmd: dvc pull
-  instal_dependencies:
-    cmd: pip install -r requirements.txt
-  preprocess_data:
-    cmd: python preprocess_data.py
-    deps:
-    - data/jigsaw-toxic-comment-train.csv
-    - preprocess_data.py
-    outs:
-    - data/preprocessed_data.csv
-  train:
-    cmd: python train.py
-    deps:
-    - data/preprocessed_data.csv
-    - train.py   
-    metrics:
-    - metrics.json:
-        cache: false
+  # instal_dependencies:
+  #   cmd: pip install -r requirements.txt
+  # preprocess_data:
+  #   cmd: python preprocess_data.py
+  #   deps:
+  #   - data/jigsaw-toxic-comment-train.csv
+  #   - preprocess_data.py
+  #   outs:
+  #   - data/preprocessed_data.csv
+  # train:
+  #   cmd: python train.py
+  #   deps:
+  #   - data/preprocessed_data.csv
+  #   - train.py   
+  #   metrics:
+  #   - metrics.json:
+  #       cache: false
   
   
