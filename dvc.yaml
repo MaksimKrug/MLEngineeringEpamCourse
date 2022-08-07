@@ -8,7 +8,7 @@ stages:
     deps:
     - get_data.py
     outs:
-    - data/igsaw-toxic-comment-train.csv
+    - data/jigsaw-toxic-comment-train.csv
   preprocess_data:
     cmd: python preprocess_data.py
     deps:
