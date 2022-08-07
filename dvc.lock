@@ -3,28 +3,28 @@ stages:
   instal_dependencies:
     cmd: pip install -r requirements.txt
   preprocess_data:
-    cmd: python preprocess_data.py
+    cmd: python get_data.py && python preprocess_data.py
     deps:
-    - path: data/jigsaw-toxic-comment-train.csv
-      md5: 16db961d5fcd3ce849c0b11fcf0820a9
-      size: 95538001
+    - path: get_data.py
+      md5: 98ee21e47a245ace8b19e75811281df7
+      size: 192
     - path: preprocess_data.py
-      md5: 5dba76f7e59e6b8ceea050f6ca4c2973
-      size: 658
+      md5: c3debd4b325ed69fd9ef62ea280c6385
+      size: 657
     outs:
     - path: data/preprocessed_data.csv
-      md5: 85ec2aa0186165363627fd18b6aefd95
-      size: 3819170
+      md5: 47e22aa9c57fddc1db30a79829923b78
+      size: 382553
   train:
     cmd: python train.py
     deps:
     - path: data/preprocessed_data.csv
-      md5: 85ec2aa0186165363627fd18b6aefd95
-      size: 3819170
+      md5: 47e22aa9c57fddc1db30a79829923b78
+      size: 382553
     - path: train.py
       md5: 4a8e463784364336d3c604915bd0bb0d
       size: 1565
     outs:
     - path: metrics.json
-      md5: bacae594d87544de8b95b9e61d9c2bde
-      size: 52
+      md5: 356386b5763606312eaa6609f3ed70f5
+      size: 51
