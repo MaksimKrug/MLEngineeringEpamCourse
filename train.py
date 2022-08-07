@@ -32,7 +32,7 @@ y_train = train_data[target_columns].values
 y_test = test_data[target_columns].values
 
 # train model
-model = RandomForestClassifier(random_state=42)
+model = RandomForestClassifier(random_state=42, max_depth=10)
 model.fit(X_train, y_train)
 
 # metrics
