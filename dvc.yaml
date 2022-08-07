@@ -1,8 +1,14 @@
 stages:
-  load_data:
-    cmd: pip install 'dvc[gdrive]' && dvc pull
   instal_dependencies:
     cmd: pip install -r requirements.txt
+  # load_data:
+  #   cmd: pip install 'dvc[gdrive]' && dvc pull
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - get_data.py
+    outs:
+    - data/igsaw-toxic-comment-train.csv
   preprocess_data:
     cmd: python preprocess_data.py
     deps:
