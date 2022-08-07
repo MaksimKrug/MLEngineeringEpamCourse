@@ -8,7 +8,7 @@ tokenizer = nltk.tokenize.RegexpTokenizer(r"\w+")
 
 # read data
 df = pd.read_csv("data/jigsaw-toxic-comment-train.csv", index_col=0)
-df = df.sample(10000, random_state=42)
+df = df.sample(1000, random_state=42)
 
 # preprocess text
 df["comment_text"] = df["comment_text"].apply(lambda x: x.lower().replace("\n", " "))
