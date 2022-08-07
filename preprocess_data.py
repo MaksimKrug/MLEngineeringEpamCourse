@@ -3,6 +3,7 @@ import pandas as pd
 
 # nltk utils
 nltk.download("omw-1.4")
+nltk.download('wordnet')
 lemmatizer = nltk.stem.WordNetLemmatizer()
 tokenizer = nltk.tokenize.RegexpTokenizer(r"\w+")
 
