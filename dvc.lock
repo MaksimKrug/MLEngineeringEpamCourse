@@ -22,8 +22,8 @@ stages:
       md5: 85ec2aa0186165363627fd18b6aefd95
       size: 3819170
     - path: train.py
-      md5: 592ea776e203301213362b5ff781ac81
-      size: 1076
+      md5: 4a8e463784364336d3c604915bd0bb0d
+      size: 1565
     outs:
     - path: metrics.json
       md5: bacae594d87544de8b95b9e61d9c2bde
