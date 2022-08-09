@@ -10,7 +10,6 @@ from sklearn.model_selection import train_test_split
 
 # load data
 df = pd.read_csv("data/preprocessed_data.csv")
-df = df.loc[df["comment_text"].notna()]
 
 # split
 train_data, test_data = train_test_split(df, random_state=42)
