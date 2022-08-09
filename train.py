@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 
 # load data
 df = pd.read_csv("data/preprocessed_data.csv")
+df = df.loc[df["comment_text"].notna()]
 
 # split
 train_data, test_data = train_test_split(df, random_state=42)
@@ -22,28 +23,23 @@ X_test = vectorizer.transform(test_data["comment_text"])
 # preprocess target
 target_columns = [
     "toxic",
-    "severe_toxic",
-    "obscene",
-    "threat",
-    "insult",
-    "identity_hate",
 ]
 y_train = train_data[target_columns].values
 y_test = test_data[target_columns].values
 
 # train model
 model = RandomForestClassifier(random_state=42, max_depth=10)
-model.fit(X_train, y_train)
+model.fit(X_train, y_train.ravel())
 
 # metrics
 y_pred = model.predict(X_test)
-acc, f1 = accuracy_score(y_test, y_pred), f1_score(y_test, y_pred, average="micro")
+acc, f1 = accuracy_score(y_test, y_pred), f1_score(y_test, y_pred, average="macro")
 
 with open("metrics.json", "w") as f:
     json.dump({"accuracy": acc, "f1_score": f1}, f)
 
 # get the most important words
-all_words = vectorizer.get_feature_names()
+all_words = vectorizer.get_feature_names_out()
 words_importnaces = model.feature_importances_
 the_most_important_words = sorted(
     list(zip(all_words, words_importnaces)), key=lambda x: x[1], reverse=True
