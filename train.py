@@ -1,6 +1,6 @@
 import json
+import joblib
 
-import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
@@ -18,6 +18,7 @@ train_data, test_data = train_test_split(df, random_state=42)
 vectorizer = TfidfVectorizer()
 X_train = vectorizer.fit_transform(train_data["comment_text"])
 X_test = vectorizer.transform(test_data["comment_text"])
+joblib.dump(vectorizer, "vectorizer.joblib")
 
 # preprocess target
 target_columns = [
@@ -46,3 +47,6 @@ the_most_important_words = sorted(
 temp_data = pd.DataFrame(the_most_important_words, columns=["Words", "Importance"])
 fig = sns.barplot(x="Words", y="Importance", data=temp_data[:10])
 fig.get_figure().savefig("feature_importances.png")
+
+# save model
+joblib.dump(model, "model.joblib")

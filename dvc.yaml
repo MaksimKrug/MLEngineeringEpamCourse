@@ -1,6 +1,6 @@
 stages:
-  instal_dependencies:
-    cmd: pip install -r requirements.txt
+  # instal_dependencies:
+  #   cmd: pip install -r requirements.txt
   # load_data:
   #   cmd: pip install 'dvc[gdrive]' && dvc pull
   preprocess_data:
@@ -11,13 +11,10 @@ stages:
     outs:
     # - data/jigsaw-toxic-comment-train.csv
     - data/preprocessed_data.csv
-  # preprocess_data:
-  #   cmd: python preprocess_data.py
-  #   deps:
-  #   - data/jigsaw-toxic-comment-train.csv
-  #   - preprocess_data.py
-  #   outs:
-  #   - data/preprocessed_data.csv
+  test_data:
+    cmd: python test_data.py
+    deps:
+    - test_data.py
   train:
     cmd: python train.py
     deps:
@@ -26,5 +23,10 @@ stages:
     metrics:
     - metrics.json:
         cache: false
+  test_model:
+    cmd: python test_model.py
+    deps:
+    - test_model.py
+  
   
   
