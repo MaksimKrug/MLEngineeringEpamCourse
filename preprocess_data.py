@@ -23,5 +23,3 @@ df = df.loc[df["comment_text"] != ""]
 
 # save preprocessed data
 df.to_csv("data/preprocessed_data.csv", index=False)
-
-print(df["toxic"].value_counts(normalize=True))

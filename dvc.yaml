@@ -4,7 +4,7 @@ stages:
   # load_data:
   #   cmd: pip install 'dvc[gdrive]' && dvc pull
   preprocess_data:
-    cmd: python get_data.py && python preprocess_data.py
+    cmd: python3 preprocess_data.py
     deps:
     - get_data.py
     - preprocess_data.py
@@ -12,11 +12,11 @@ stages:
     # - data/jigsaw-toxic-comment-train.csv
     - data/preprocessed_data.csv
   test_data:
-    cmd: python test_data.py
+    cmd: python3 test_data.py
     deps:
     - test_data.py
   train:
-    cmd: python train.py
+    cmd: python3 train.py
     deps:
     - data/preprocessed_data.csv
     - train.py   
@@ -24,7 +24,7 @@ stages:
     - metrics.json:
         cache: false
   test_model:
-    cmd: python test_model.py
+    cmd: python3 test_model.py
     deps:
     - test_model.py
   
