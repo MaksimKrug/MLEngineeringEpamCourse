@@ -19,12 +19,8 @@ docker run --rm -v $(pwd):/workdir -p 8888:8888 -it text_classification
 ```
 
 ## Pipeline inside docker contatiner
-You need t oexecute Example.ipynb file and as a result you will have "preds.csv" file with predicts for test data. This file is completely useless and need just for homework.
-1) Activate conda environment
-```
-source activate my_env
-```
-2) Run Jupyter Notebook. 
-```
-jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
-```
+You need to execute Example.ipynb file and as a result you will have "preds.csv" file with predicts for test data. This file is completely useless and need just for homework.
+
+1) Run docker container
+2) Connect to http://localhost:8888/
+3) Log in with password
