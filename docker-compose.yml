@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  mlflow_back:
+    image: task3:mlflow_back
+    container_name: mlflow_back
+    build: mlflow/.
+    # container_name: check
+    ports:
+      - "5000:5000"
+    command: mlflow server --host 0.0.0.0
+  
+  train_pipeline:
+    image: task3:train_pipeline
+    container_name: train_pipeline
+    build: train_pipeline/.
+    # command: python3 train.py
+    entrypoint: bash
