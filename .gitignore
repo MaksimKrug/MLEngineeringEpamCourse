@@ -5,3 +5,7 @@ data/*
 __pycache__/*
 *.png
 mlruns/*
+*pyc
+*log
+./data/
+./logs/
