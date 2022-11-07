@@ -3,6 +3,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 
+import pandas as pd
+
 
 def preprocess_data():
     # nltk utils
@@ -14,7 +16,8 @@ def preprocess_data():
 
     # read data
     spark = SparkSession.builder.getOrCreate() 
-    df = spark.read.option("delimiter",",").option("header","true").option("multiline", "true").csv("data/jigsaw-toxic-comment-train.csv")
+    df = pd.read_csv("data/jigsaw-toxic-comment-train.csv")
+    df = spark.createDataFrame(df)
 
     
     # drop rows with nans
@@ -25,8 +28,8 @@ def preprocess_data():
     lemmatization = udf(lambda x: " ".join([lemmatizer.lemmatize(w) for w in x]))
     # apply preprocessing
     df = df.withColumn('comment_text', to_lower_case("comment_text"))
-    # df = df.withColumn('comment_text', tokenization("comment_text"))
-    # df = df.withColumn('comment_text', lemmatization("comment_text"))
+    df = df.withColumn('comment_text', tokenization("comment_text"))
+    df = df.withColumn('comment_text', lemmatization("comment_text"))
     # remove epmty rows
     df = df.filter(df.comment_text != "")
 

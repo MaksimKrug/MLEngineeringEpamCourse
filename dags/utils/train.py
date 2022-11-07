@@ -15,7 +15,7 @@ def train():
     # load data
     df = pd.read_csv("data/preprocessed_data.csv")
     # split
-    train_data, test_data = train_test_split(df.sample(10000), random_state=42)
+    train_data, test_data = train_test_split(df, random_state=42)
     # TF-IDF
     vectorizer = TfidfVectorizer()
     X_train = vectorizer.fit_transform(train_data["comment_text"])
