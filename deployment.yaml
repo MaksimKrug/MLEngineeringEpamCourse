@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-server
+  labels:
+    app: fastapi-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-server
+  template:
+    metadata:
+      labels:
+        app: fastapi-server
+    spec:
+      containers:
+      - name: fastapi-server
+        image: maksimkrug/fastapi-server
+        ports:
+        - containerPort: 80
+        env:
+        - name: MLFLOW_IP
+          value: http://172.17.0.3:5000/
+          

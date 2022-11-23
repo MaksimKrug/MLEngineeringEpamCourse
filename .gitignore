@@ -9,3 +9,4 @@ mlruns/*
 *log
 ./data/
 ./logs/
+fastapi/data/*
